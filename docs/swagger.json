@@ -1,0 +1,77 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a simple API to show IP mapping.",
+        "title": "IP Mapper API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8123",
+    "basePath": "/",
+    "paths": {
+        "/v1/bind_ip/{ip}": {
+            "get": {
+                "description": "Get node of specefic ip",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "IP"
+                ],
+                "summary": "Show node of specefic ip",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "IP Address",
+                        "name": "ip",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/bindings": {
+            "get": {
+                "description": "Get a list of IP addresses",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "IP"
+                ],
+                "summary": "Show IP addresses",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,51 @@
+basePath: /
+host: localhost:8123
+info:
+  contact: {}
+  description: This is a simple API to show IP mapping.
+  title: IP Mapper API
+  version: "1.0"
+paths:
+  /v1/bind_ip/{ip}:
+    get:
+      description: Get node of specefic ip
+      parameters:
+      - description: IP Address
+        in: path
+        name: ip
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              additionalProperties:
+                type: string
+              type: object
+            type: object
+      summary: Show node of specefic ip
+      tags:
+      - IP
+  /v1/bindings:
+    get:
+      description: Get a list of IP addresses
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                additionalProperties:
+                  type: string
+                type: object
+              type: array
+            type: object
+      summary: Show IP addresses
+      tags:
+      - IP
+swagger: "2.0"
